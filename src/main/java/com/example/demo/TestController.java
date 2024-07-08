@@ -18,7 +18,7 @@ public class TestController {
 
     @PostMapping("/hello")
     public String helloWorldPost(@RequestBody User user) {
-        return "Hello sir " + user.name() + " " + user.age();
+        return "Hello " + user.name() + " " + user.age();
     }
 }
 
