@@ -1,4 +1,4 @@
-package com.outbrain.summerschool.domain.weather.client;
+package com.example.demo.weather.client;
 
 import com.outbrain.summerschool.domain.weather.client.dto.WeatherResponse;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,4 @@
-package com.outbrain.summerschool.domain.weather;
+package com.example.demo.weather;
 
 import com.outbrain.summerschool.domain.weather.client.WeatherClient;
 import com.outbrain.summerschool.domain.weather.client.dto.WeatherResponse;

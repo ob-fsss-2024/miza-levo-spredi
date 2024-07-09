@@ -1,4 +1,4 @@
-package com.outbrain.summerschool.domain.weather.client.dto;
+package com.example.demo.weather.client.dto;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.outbrain.summerschool.domain.weather.client;
+package com.example.demo.weather.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
