@@ -1,7 +1,7 @@
 package com.example.demo.weather;
 
-import com.outbrain.summerschool.domain.weather.client.WeatherClient;
-import com.outbrain.summerschool.domain.weather.client.dto.WeatherResponse;
+import com.example.demo.weather.client.WeatherClient;
+import com.example.demo.weather.client.dto.WeatherResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
