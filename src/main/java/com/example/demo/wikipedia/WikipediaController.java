@@ -9,33 +9,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RequestMapping("wikipedia")
 public class WikipediaController {
-<<<<<<< HEAD
-  private final WikipediaService wikipediaService;
 
-  public WikipediaController(WikipediaService wikipediaService) {
-    this.wikipediaService = wikipediaService;
-  }
-
-  @GetMapping("/title/{title}")
-  public List<WikipediaData> findByTitle(@PathVariable("title") final String title) {
-    return wikipediaService.findByTitleRepository(title);
-  }
-
-  @GetMapping("/title2/{title}")
-  public List<WikipediaData> findByTitleCustom(@PathVariable("title") final String title) {
-    return wikipediaService.findByTitleCustom(title);
-  }
-
-  @GetMapping("/title3/{title}")
-  public List<WikipediaData> findByTitleClient(@PathVariable("title") final String title) {
-    return wikipediaService.findByTitleClient(title);
-  }
-
-  @GetMapping("/title4/{title}")
-  public List<WikipediaData> findByTitleOperations(@PathVariable("title") final String title) {
-    return wikipediaService.findByTitleOperations(title);
-  }
-=======
     private final WikipediaService wikipediaService;
 
     public WikipediaController(WikipediaService wikipediaService) {
@@ -61,5 +35,4 @@ public class WikipediaController {
     public List<WikipediaData> findByTitleOperations(@PathVariable("title") final String title) {
         return wikipediaService.findByTitleOperations(title);
     }
->>>>>>> 4ed29f7da208cd0c08450fca57246510dfca4f98
 }
