@@ -28,4 +28,21 @@ public class CocktailController {
         }
         return cocktailClient.getCocktail(s);
     }
+
+    @GetMapping("/getCocktailByAlcohol")
+    public CocktailResponse getCocktailByAlcohol(@RequestParam final String alcohol) {
+        for (LinkedHashMap drink : cocktailClient.getCocktailByAlcohol(alcohol).drinks()) {
+            System.out.println(drink.get("strDrink"));
+            String drinkId =drink.get("idDrink").toString();
+        }
+        return cocktailClient.getCocktailByAlcohol(alcohol);
+    }
+
+    @GetMapping("/getCocktailById")
+    public LinkedHashMap getCocktailById(@RequestParam final String id) {
+        System.out.println(cocktailClient.getCocktailById(id).drinks().getFirst());
+        String instructions = cocktailClient.getCocktailById(id).drinks().getFirst().get("strInstructions").toString();
+        System.out.println(instructions);
+        return cocktailClient.getCocktailById(id).drinks().getFirst();
+    }
 }
