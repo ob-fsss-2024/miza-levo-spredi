@@ -1,11 +1,9 @@
 package com.example.demo.cocktails;
 
-import jakarta.json.JsonObject;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.cocktails.client.dto.CocktailResponse;
 import com.example.demo.cocktails.client.CocktailClient;
 
-import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 
 
@@ -41,8 +39,22 @@ public class CocktailController {
     @GetMapping("/getCocktailById")
     public LinkedHashMap getCocktailById(@RequestParam final String id) {
         System.out.println(cocktailClient.getCocktailById(id).drinks().getFirst());
-        String instructions = cocktailClient.getCocktailById(id).drinks().getFirst().get("strInstructions").toString();
-        System.out.println(instructions);
-        return cocktailClient.getCocktailById(id).drinks().getFirst();
+        LinkedHashMap<String, String> drink = cocktailClient.getCocktailById(id).drinks().getFirst();
+        LinkedHashMap<String, String> ingredients = new LinkedHashMap<>();
+
+        for (int i = 1; i <= 15; i++) {
+            String ingredient = "strIngredient" + i;
+            String measure = "strMeasure" + i;
+            if (drink.get(ingredient) != null) {
+                ingredients.put(drink.get(ingredient), drink.get(measure));
+            }
+        }
+        System.out.println(ingredients);
+        LinkedHashMap usefulInfo = new LinkedHashMap();
+        usefulInfo.put("id", drink.get("idDrink"));
+        usefulInfo.put("name", drink.get("strDrink"));
+        usefulInfo.put("instructions", drink.get("strInstructions"));
+        usefulInfo.put("ingredients", ingredients);
+        return usefulInfo;
     }
 }

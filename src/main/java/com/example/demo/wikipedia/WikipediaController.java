@@ -33,6 +33,18 @@ public class WikipediaController {
 
     @GetMapping("/title4/{title}")
     public List<WikipediaData> findByTitleOperations(@PathVariable("title") final String title) {
+
         return wikipediaService.findByTitleOperations(title);
+    }
+
+    @GetMapping("/cocktail/{title}")
+    public WikipediaData findCocktailInfo(@PathVariable("title") final String name) {
+        WikipediaData result = wikipediaService.findByTitleOperations(name).getFirst();
+        String title = result.title().toLowerCase();
+        if (title.contains(name.toLowerCase())) {
+            return result;
+        } else {
+            return null;
+        }
     }
 }
