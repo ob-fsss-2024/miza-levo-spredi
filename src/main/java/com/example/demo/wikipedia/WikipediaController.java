@@ -38,12 +38,12 @@ public class WikipediaController {
     }
 
     @GetMapping("/cocktail/{title}")
-    public String findCocktailInfo(@PathVariable("title") final String name) {
+    public WikipediaData findCocktailInfo(@PathVariable("title") final String name) {
         WikipediaData result = wikipediaService.findByTitleOperations(name).getFirst();
         String title = result.title().toLowerCase();
         String openingText = result.opening_text();
         if (title.contains(name.toLowerCase())) {
-            return openingText;
+            return result;
         } else {
             return null;
         }

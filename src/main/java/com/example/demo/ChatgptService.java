@@ -2,6 +2,7 @@ package com.example.demo;
 
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.azure.openai.AzureOpenAiChatModel;
@@ -24,12 +25,12 @@ public class ChatgptService {
     private final Timer chatGptResponseTimer;
 
     @GetMapping("/chatgpt")
-    public String getChatgpt(@RequestParam String prompt) {
+    public JSONObject getChatgpt(@RequestParam String prompt) {
         logger.info("Fetching response from openai about: " + prompt);
         final long startTime = System.currentTimeMillis();
         String chatGptResponse = chatModel.call(prompt);
         chatGptResponseTimer.record(System.currentTimeMillis() - startTime, TimeUnit.MILLISECONDS);
         logger.info("Response from chatgpt: " + chatGptResponse);
-        return chatGptResponse;
+        return new JSONObject(chatGptResponse);
     }
 }
