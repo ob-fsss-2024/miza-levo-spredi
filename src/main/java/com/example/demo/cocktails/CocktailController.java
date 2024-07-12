@@ -56,7 +56,7 @@ public class CocktailController {
         cocktailByIdCounter.increment();
         LinkedHashMap<String, String> drink = cocktailClient.getCocktailById(id).drinks().getFirst();
         LinkedHashMap<String, String> ingredients = new LinkedHashMap<>();
-
+        logger.info(drink.toString());
         for (int i = 1; i <= 15; i++) {
             String ingredient = "strIngredient" + i;
             String measure = "strMeasure" + i;
@@ -70,6 +70,7 @@ public class CocktailController {
         usefulInfo.put("name", drink.get("strDrink"));
         usefulInfo.put("instructions", drink.get("strInstructions"));
         usefulInfo.put("ingredients", ingredients);
+        usefulInfo.put("image", drink.get("strDrinkThumb"));
         return usefulInfo;
     }
 }

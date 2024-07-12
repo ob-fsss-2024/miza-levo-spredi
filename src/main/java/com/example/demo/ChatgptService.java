@@ -25,12 +25,12 @@ public class ChatgptService {
     private final Timer chatGptResponseTimer;
 
     @GetMapping("/chatgpt")
-    public JSONObject getChatgpt(@RequestParam String prompt) {
+    public String getChatgpt(@RequestParam String prompt) {
         logger.info("Fetching response from openai about: " + prompt);
         final long startTime = System.currentTimeMillis();
         String chatGptResponse = chatModel.call(prompt);
         chatGptResponseTimer.record(System.currentTimeMillis() - startTime, TimeUnit.MILLISECONDS);
         logger.info("Response from chatgpt: " + chatGptResponse);
-        return new JSONObject(chatGptResponse);
+        return chatGptResponse;
     }
 }
